@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 import FolderSelector from '@/functions/FolderSelector.js';
 import FilesArray from '@/functions/FilesArray.js';
 
-const ButtonFolderSelector= ({ setRows, formData, setFormData }) => {
+const ButtonFolderSelector= ({ setRows, formData }) => {
     const handleClick = async () => {
         const files = await FolderSelector();
         const filesArray = FilesArray(files);

@@ -1,7 +1,10 @@
+import ToArrayExtensions from "./ToArrayExtensions";
+
 const DocumentationGenerator = (formData) => {
     console.log('Données reçues :', formData);
 
-    const { files, formats } = formData;
+    const { files, formats, extensionsName } = formData;
+    const extensions = ToArrayExtensions(extensionsName);
 
     files.forEach(async (fileHandle, index) => {
         try {
@@ -13,6 +16,8 @@ const DocumentationGenerator = (formData) => {
     });
 
     console.log('Formats choisis :', formats.pdf ? 'PDF' : '', formats.markdown ? 'Markdown' : '');
+
+    console.log('Extensions : ', extensions);
 }
 
 export default DocumentationGenerator;

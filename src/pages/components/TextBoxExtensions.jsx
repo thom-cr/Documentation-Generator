@@ -5,12 +5,12 @@ const TextBoxExtensions = ({ formData, setFormData }) => {
     const handleChange = (event) => {
         setFormData({
             ...formData,
-            extensions: event.target.value,
+            extensionsName: event.target.value,
         });
     };
     
     return (
-        <TextField type="input" onChange={handleChange} value={formData.extensions} label="Extensions" variant="outlined" placeholder="js, jsx, ..." fullWidth required/>
+        <TextField type="input" onChange={handleChange} value={formData.extensionsName} label="Extensions" variant="outlined" placeholder="js, jsx, ..." fullWidth required/>
     )
 }
 

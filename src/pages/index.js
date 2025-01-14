@@ -14,7 +14,7 @@ const MainFrame = () => {
   const [rows, setRows] = useState([]);
   const [formData, setFormData] = useState({
     projectName: '',
-    extensions: '',
+    extensionsName: '',
     commentPattern: '',
     files: [],
     formats: {
@@ -43,7 +43,7 @@ const MainFrame = () => {
           <Box sx={{  display: 'flex', flexDirection: 'row', width: '100%', maxWidth: '800px' }}>
             <Box component="form" sx={{  display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '400px', marginTop: '20px', marginRight: '10px' }}>
               <Box sx={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
-                <ButtonFolderSelector setRows={setRows} formData={formData} setFormData={setFormData}/>
+                <ButtonFolderSelector setRows={setRows} formData={formData} />
                 <ButtonFilesSelector setRows={setRows} formData={formData} setFormData={setFormData}/>
               </Box>
 
