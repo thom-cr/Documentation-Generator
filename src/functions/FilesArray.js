@@ -1,15 +1,17 @@
-const FilesArray = (files) => {
-    const rows = files.map((fileEntry) => {
-        const [fileName, ...extParts] = fileEntry.name.split(".");
-        const extension = extParts.join(".");
+import ToArrayExtensions from "./ToArrayExtensions";
+import FilterFiles from "./FilterFiles";
 
-        return {
-            file: fileName,
-            extension: extension || "",
-        };
-    });
+const FilesArray = async (files, extensionsName) => {
+    if (extensionsName !== undefined) {
+        const extensions = ToArrayExtensions(extensionsName);
+        
+        console.log('Extensions : ', extensions);
 
-    return rows;
+        const filesFiltered = await FilterFiles(files, extensions);
+        const rows = filesFiltered;
+        
+        return rows;
+    }
 };
 
 export default FilesArray;

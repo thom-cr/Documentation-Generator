@@ -43,13 +43,13 @@ const MainFrame = () => {
           <Box sx={{  display: 'flex', flexDirection: 'row', width: '100%', maxWidth: '800px' }}>
             <Box component="form" sx={{  display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '400px', marginTop: '20px', marginRight: '10px' }}>
               <Box sx={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
-                <ButtonFolderSelector setRows={setRows} formData={formData} />
+                <ButtonFolderSelector setRows={setRows} formData={formData} setFormData={setFormData}/>
                 <ButtonFilesSelector setRows={setRows} formData={formData} setFormData={setFormData}/>
               </Box>
 
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '16px' }}>
                 <TextBoxProjectName formData={formData} setFormData={setFormData} disabled='false'/>
-                <TextBoxExtensions formData={formData} setFormData={setFormData}/>
+                <TextBoxExtensions setRows={setRows} formData={formData} setFormData={setFormData}/>
                 <TextBoxCommentPattern formData={formData} setFormData={setFormData}/>
               </Box>
 
