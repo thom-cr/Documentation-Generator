@@ -8,9 +8,10 @@ const TextBoxCommentPattern = ({ formData, setFormData }) => {
             commentPattern: event.target.value,
         });
     };
+    //doc: ceci est un troisieme commentaire.
     
     return (
-        <TextField type="input" onChange={handleChange} value={formData.commentPattern} label="Pattern des commentaires" variant="outlined" placeholder="ex: //doc: " fullWidth required/>
+        <TextField type="input" onChange={handleChange} value={formData.commentPattern} label="Pattern des commentaires" variant="outlined" placeholder="ex: doc: " fullWidth required/>
     )
 }
 
