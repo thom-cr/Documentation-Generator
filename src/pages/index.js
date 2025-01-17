@@ -57,7 +57,7 @@ const MainFrame = () => {
                 <CheckBoxOutputFormat formData={formData} setFormData={setFormData}/>
               </Box>
 
-              <ButtonGenerateDocumentation formData={formData}/>
+              <ButtonGenerateDocumentation formData={formData} rows={rows}/>
 
             </Box>
 

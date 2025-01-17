@@ -2,9 +2,9 @@ import React from "react";
 import { Button } from "@mui/material";
 import DocumentationGenerator from "@/functions/DocumentationGenerator";
 
-const ButtonGenerateDocumentation = ({ formData }) => {
+const ButtonGenerateDocumentation = ({ formData, rows }) => {
     const handleSubmit = (event) => {
-        DocumentationGenerator(formData);
+        DocumentationGenerator(formData, rows);
     };
 
     return (
