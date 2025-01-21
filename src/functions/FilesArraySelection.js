@@ -1,4 +1,5 @@
 const FilesArraySelection = (files) => {
+
     const rows = files.map((fileEntry) => {
         const [fileName, ...extParts] = fileEntry.name.split(".");
         const extension = extParts.join(".");
@@ -8,6 +9,7 @@ const FilesArraySelection = (files) => {
             extension: extension || "",
         };
     });
+
     return rows;
 }
 

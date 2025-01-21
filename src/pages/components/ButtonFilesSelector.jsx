@@ -16,9 +16,11 @@ const ButtonFilesSelector = ({ setRows, formData, setFormData }) => {
 
         if (extensionsName === "") {
             const filesArray = FilesArraySelection(files);
+
             setRows(filesArray);
         } else {
             const filesArray = FilesArray(files, extensionsName);
+            
             setRows([filesArray]);
         }
         
