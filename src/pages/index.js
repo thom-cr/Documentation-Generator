@@ -1,13 +1,13 @@
 import Head from "next/head";
 import React, { useState } from 'react';
 import { Typography, Box } from '@mui/material';
-import ButtonFolderSelector from "./components/ButtonFolderSelector";
-import ButtonFilesSelector from "./components/ButtonFilesSelector";
-import TextBoxProjectName from "./components/TextBoxProjectName";
-import TextBoxExtensions from "./components/TextBoxExtensions";
-import CheckBoxOutputFormat from "./components/CheckBoxOutputFormat";
-import ButtonGenerateDocumentation from "./components/ButtonGenerateDocumentation";
-import TableDetectedFiles from "./components/TableDetectedFiles";
+import ButtonFolderSelector from "./components/ButtonFolderSelector.js";
+import ButtonFilesSelector from "./components/ButtonFilesSelector.js";
+import TextBoxProjectName from "./components/TextBoxProjectName.js";
+import TextBoxExtensions from "./components/TextBoxExtensions.js";
+import CheckBoxOutputFormat from "./components/CheckBoxOutputFormat.js";
+import ButtonGenerateDocumentation from "./components/ButtonGenerateDocumentation.js";
+import TableDetectedFiles from "./components/TableDetectedFiles.js";
 
 const MainFrame = () => {
   const [rows, setRows] = useState([]);
@@ -38,8 +38,8 @@ const MainFrame = () => {
               Outil permettant la génération automatique de documentation en fonction des commentaires et des liens entre les différentes méthodes
             </Typography>
           </Box>
-          <Box sx={{  display: 'flex', flexDirection: 'row', width: '100%', maxWidth: '800px' }}>
-            <Box component="form" sx={{  display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '400px', marginTop: '20px', marginRight: '10px' }}>
+          <Box sx={{  display: 'flex', flexDirection: 'row', width: '100%', maxWidth: '820px' }}>
+            <Box component="form" sx={{  display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '410px', marginTop: '20px', marginRight: '10px' }}>
               <Box sx={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
                 <ButtonFolderSelector setRows={setRows} formData={formData} setFormData={setFormData}/>
                 <ButtonFilesSelector setRows={setRows} formData={formData} setFormData={setFormData}/>
