@@ -8,6 +8,12 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+  /*.MuiCheckbox-root .MuiSvgIcon-root {
+    border: 1px solid white;
+  }
+  .MuiTextField-root .MuiOutlinedInput-root {
+    border: 2px solid white;
+  }*/
 }
 
 html,

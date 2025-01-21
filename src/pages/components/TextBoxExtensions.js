@@ -5,13 +5,15 @@ import FilesArray from '@/functions/FilesArray';
 const TextBoxExtensions = ({ setRows, formData, setFormData }) => {
     const handleChange = async (event) => {
         const { files } = formData;
-        const filesArray = await FilesArray(files, event.target.value);
+        
 
         setFormData((prevFormData) => ({
             ...prevFormData,
             extensionsName: event.target.value,
         }));
 
+        const filesArray = await FilesArray(files, event.target.value);
+        
         setRows(filesArray);
     };
     
