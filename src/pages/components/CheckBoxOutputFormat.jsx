@@ -18,7 +18,7 @@ const CheckBoxOutputFormat = ({ formData, setFormData }) => {
             <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                 <Box sx={{ paddingTop: '8px', paddingRight: '40px', paddingLeft: '20px' }}>
                     <Typography variant="body1" gutterBottom>
-                        Format de sortie:
+                        Format de sortie :
                     </Typography>
                 </Box>
                 <FormControlLabel control={<Checkbox checked={formData.formats?.pdf || false} onChange={handleCheckboxChange} name='pdf'/>} label="PDF" />

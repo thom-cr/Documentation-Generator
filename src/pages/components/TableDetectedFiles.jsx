@@ -1,6 +1,8 @@
 import React from "react";
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper } from "@mui/material";
 
+//doc: Ceci est une premiere doc.
+
 const TableDetectedFiles = ({ rows }) => {
     return (
         <Paper sx={{ width: '100%', marginTop: '20px', marginLeft: '10px', border: 1 }}>
@@ -29,5 +31,12 @@ const TableDetectedFiles = ({ rows }) => {
         </Paper>
       );
 }
+
+//doc: Ceci est une deuxieme doc.
+
+/*doc: 
+ceci est une autre doc
+entre la 3eme et la 4eme
+*/
 
 export default TableDetectedFiles;
