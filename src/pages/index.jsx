@@ -1,13 +1,13 @@
 import Head from "next/head";
 import React, { useState } from 'react';
 import { Typography, Box } from '@mui/material';
-import ButtonFolderSelector from "./components/ButtonFolderSelector.js";
-import ButtonFilesSelector from "./components/ButtonFilesSelector.js";
-import TextBoxProjectName from "./components/TextBoxProjectName.js";
-import TextBoxExtensions from "./components/TextBoxExtensions.js";
-import CheckBoxOutputFormat from "./components/CheckBoxOutputFormat.js";
-import ButtonGenerateDocumentation from "./components/ButtonGenerateDocumentation.js";
-import TableDetectedFiles from "./components/TableDetectedFiles.js";
+import ButtonFolderSelector from "./components/ButtonFolderSelector.jsx";
+import ButtonFilesSelector from "./components/ButtonFilesSelector.jsx";
+import TextBoxProjectName from "./components/TextBoxProjectName.jsx";
+import TextBoxExtensions from "./components/TextBoxExtensions.jsx";
+import CheckBoxOutputFormat from "./components/CheckBoxOutputFormat.jsx";
+import ButtonGenerateDocumentation from "./components/ButtonGenerateDocumentation.jsx";
+import TableDetectedFiles from "./components/TableDetectedFiles.jsx";
 
 const MainFrame = () => {
   const [rows, setRows] = useState([]);
