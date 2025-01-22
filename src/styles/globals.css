@@ -5,7 +5,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #383838;
     --foreground: #ededed;
   }
   /*.MuiCheckbox-root .MuiSvgIcon-root {
