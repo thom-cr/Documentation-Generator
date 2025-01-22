@@ -5,9 +5,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #0b0b0b;
     --foreground: #ededed;
   }
+  /*.MuiCheckbox-root .MuiSvgIcon-root {
+    border: 1px solid white;
+  }
+  .MuiTextField-root .MuiOutlinedInput-root {
+    border: 2px solid white;
+  }*/
 }
 
 html,
