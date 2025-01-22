@@ -1,21 +1,19 @@
 import Head from "next/head";
 import React, { useState } from 'react';
 import { Typography, Box } from '@mui/material';
-import ButtonFolderSelector from "./components/ButtonFolderSelector";
-import ButtonFilesSelector from "./components/ButtonFilesSelector";
-import TextBoxProjectName from "./components/TextBoxProjectName";
-import TextBoxExtensions from "./components/TextBoxExtensions";
-import TextBoxCommentPattern from "./components/TextBoxCommentPattern";
-import CheckBoxOutputFormat from "./components/CheckBoxOutputFormat";
-import ButtonGenerateDocumentation from "./components/ButtonGenerateDocumentation";
-import TableDetectedFiles from "./components/TableDetectedFiles";
+import ButtonFolderSelector from "./components/ButtonFolderSelector.jsx";
+import ButtonFilesSelector from "./components/ButtonFilesSelector.jsx";
+import TextBoxProjectName from "./components/TextBoxProjectName.jsx";
+import TextBoxExtensions from "./components/TextBoxExtensions.jsx";
+import CheckBoxOutputFormat from "./components/CheckBoxOutputFormat.jsx";
+import ButtonGenerateDocumentation from "./components/ButtonGenerateDocumentation.jsx";
+import TableDetectedFiles from "./components/TableDetectedFiles.jsx";
 
 const MainFrame = () => {
   const [rows, setRows] = useState([]);
   const [formData, setFormData] = useState({
     projectName: '',
     extensionsName: '',
-    commentPattern: '',
     files: [],
     formats: {
       pdf: false,
@@ -40,8 +38,8 @@ const MainFrame = () => {
               Outil permettant la génération automatique de documentation en fonction des commentaires et des liens entre les différentes méthodes
             </Typography>
           </Box>
-          <Box sx={{  display: 'flex', flexDirection: 'row', width: '100%', maxWidth: '800px' }}>
-            <Box component="form" sx={{  display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '400px', marginTop: '20px', marginRight: '10px' }}>
+          <Box sx={{  display: 'flex', flexDirection: 'row', width: '100%', maxWidth: '820px' }}>
+            <Box component="form" sx={{  display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '410px', marginTop: '20px', marginRight: '10px' }}>
               <Box sx={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
                 <ButtonFolderSelector setRows={setRows} formData={formData} setFormData={setFormData}/>
                 <ButtonFilesSelector setRows={setRows} formData={formData} setFormData={setFormData}/>
@@ -50,7 +48,6 @@ const MainFrame = () => {
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '16px' }}>
                 <TextBoxProjectName formData={formData} setFormData={setFormData} disabled='false'/>
                 <TextBoxExtensions setRows={setRows} formData={formData} setFormData={setFormData}/>
-                <TextBoxCommentPattern formData={formData} setFormData={setFormData}/>
               </Box>
 
               <Box sx={{ display: 'flex', flexDirection: 'row', gap: '16px', marginBottom: '16px' }}>

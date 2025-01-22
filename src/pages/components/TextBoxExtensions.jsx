@@ -5,6 +5,7 @@ import FilesArray from '@/functions/FilesArray';
 const TextBoxExtensions = ({ setRows, formData, setFormData }) => {
     const handleChange = async (event) => {
         const { files } = formData;
+        
 
         setFormData((prevFormData) => ({
             ...prevFormData,
@@ -12,7 +13,7 @@ const TextBoxExtensions = ({ setRows, formData, setFormData }) => {
         }));
 
         const filesArray = await FilesArray(files, event.target.value);
-
+        
         setRows(filesArray);
     };
     

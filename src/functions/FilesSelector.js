@@ -1,4 +1,5 @@
 const FilesSelector = async () => {
+
     const pickerOptions = {
         multiple: true,
     };
@@ -14,7 +15,9 @@ const FilesSelector = async () => {
         return files;
 
     } catch (error) {
+
         console.error("Erreur lors de la sélection du dossier :", error);
+
         return [];
     }
 };
