@@ -11,6 +11,6 @@ const FilesArraySelection = (files) => {
     });
 
     return rows;
-}
+};
 
 export default FilesArraySelection;

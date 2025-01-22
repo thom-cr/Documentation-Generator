@@ -41,12 +41,12 @@ const FileParsing = async (formData, rows) => {
                     }
                 }
 
-                filesParsed.push({ Name: fileName, comments: comments || ""});
+                filesParsed.push({ name: fileName, comments: comments || ""});
             }
         }
     }
 
-    console.log('Files Parsed : ', filesParsed);
-}
+    return filesParsed;
+};
 
 export default FileParsing; 

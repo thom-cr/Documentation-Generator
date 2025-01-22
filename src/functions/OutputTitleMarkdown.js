@@ -3,6 +3,6 @@ const OutputTitleMarkdown = (outputName) => {
     const outputTitleMarkdown = h1.concat(" ", outputName);
     
     return outputTitleMarkdown;
-}
+};
 
 export default OutputTitleMarkdown;

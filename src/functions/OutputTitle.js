@@ -1,8 +1,8 @@
-const OutputName = (projectName) => {
+const OutputTitle = (projectName) => {
     const documentation = "Documentation de ";
-    const outputName = documentation.concat(" ", projectName);
+    const outputTitle = documentation.concat(" ", projectName);
 
-    return outputName;
+    return outputTitle;
 }
 
-export default OutputName;
+export default OutputTitle;

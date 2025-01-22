@@ -34,9 +34,4 @@ const TableDetectedFiles = ({ rows }) => {
 
 //doc: Ceci est une deuxieme doc.
 
-/*doc: 
-ceci est une autre doc
-entre la 3eme et la 4eme
-*/
-
 export default TableDetectedFiles;
