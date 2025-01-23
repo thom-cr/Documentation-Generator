@@ -4,7 +4,6 @@ const FolderSelector = async () => {
         const files = [];
 
         for await (const entry of directoryHandle.values()) {
-            
             if(entry.kind === "file") {
                 files.push(entry);
             }

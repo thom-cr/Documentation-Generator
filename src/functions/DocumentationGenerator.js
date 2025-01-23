@@ -7,24 +7,22 @@ import OutputNameFileMarkdown from "./OutputNameFileMarkdown";
 import WriteMarkdown from "./WriteMarkdown";
 
 const DocumentationGenerator = async (formData, rows) => {
-
     const { projectName, formats } = formData;
-
     const filesParsed = await FileParsing(formData, rows);
 
     if (formats.pdf) {
         const outputTitle = OutputTitle(projectName);
         const outputNameFilePDF = OutputNameFilePDF(projectName);
+
         WritePDF(outputTitle, outputNameFilePDF, filesParsed);
     }
 
     if (formats.markdown) {
         const outputTitle = OutputTitleMarkdown(projectName);
         const outputNameFileMarkdown = OutputNameFileMarkdown(projectName);
+
         WriteMarkdown(outputTitle, outputNameFileMarkdown, filesParsed);
     }
-
-    
 };
 
 export default DocumentationGenerator;
