@@ -28,7 +28,7 @@ const ButtonFolderSelector= ({ setRows, formData, setFormData }) => {
     }
     
     return (
-        <Button type="input" variant="contained" value={formData.files} onClick={handleClick}>Sélection du dossier</Button>
+        <Button type="input" variant="contained" value={formData?.files} onClick={handleClick}>Sélection du dossier</Button>
     )
 }
 
