@@ -28,7 +28,7 @@ const ButtonFilesSelector = ({ setRows, formData, setFormData }) => {
     }
     
     return (
-        <Button type="input" variant="contained" value={formData.files} onClick={handleClick}>Sélection des fichiers</Button>
+        <Button type="input" variant="contained" value={formData?.files} onClick={handleClick}>Sélection des fichiers</Button>
     )
 }
 

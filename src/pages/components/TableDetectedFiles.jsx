@@ -19,7 +19,7 @@ const TableDetectedFiles = ({ rows }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row, index) => (
+                {rows?.map((row, index) => (
                   <TableRow key={index}>
                     <TableCell align="center" sx={{ border: 1 }}>{row.file}</TableCell>
                     <TableCell align="center" sx={{ border: 1 }}>{row.extension}</TableCell>

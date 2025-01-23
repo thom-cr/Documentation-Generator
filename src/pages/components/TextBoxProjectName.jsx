@@ -10,7 +10,7 @@ const TextBoxProjectName = ({ formData, setFormData }) => {
     };
 
     return (
-        <TextField type="input" onChange={handleChange} value={formData.projectName} label="Nom du projet" variant="outlined" fullWidth required/>
+        <TextField type="input" onChange={handleChange} value={formData?.projectName} label="Nom du projet" variant="outlined" fullWidth required/>
     )
 }
 
