@@ -23,7 +23,7 @@ const TextBoxExtensions = ({ setRows, formData, setFormData }) => {
     */
     
     return (
-        <TextField type="input" onChange={handleChange} value={formData.extensionsName} label="Extensions" variant="outlined" placeholder="js, jsx, ..." fullWidth/>
+        <TextField type="input" onChange={handleChange} value={formData?.extensionsName} label="Extensions" variant="outlined" placeholder="js, jsx, ..." fullWidth/>
     )
 }
 
