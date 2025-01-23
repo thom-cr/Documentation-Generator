@@ -1,6 +1,6 @@
 const OutputNameFilePDF = (projectName) => {
     const extension = ".pdf";
-    const outputNameFilePDF = projectName.concat(nameFile);
+    const outputNameFilePDF = projectName.concat(extension);
 
     return outputNameFilePDF;
 }

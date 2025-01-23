@@ -1,6 +1,6 @@
 const OutputNameFileMarkdown = (projectName) => {
-    const nameFile = ".md";
-    const outputNameFileMarkdown = projectName.concat(nameFile);
+    const extension = ".md";
+    const outputNameFileMarkdown = projectName.concat(extension);
 
     return outputNameFileMarkdown;
 }
