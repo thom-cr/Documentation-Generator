@@ -12,17 +12,35 @@ const FileParsing = async (formData, rows) => {
                 let comments = [];
 
                 for (let l = 0; l < content.length; l++) {
-                    if (content.substring(l, l + 6) === "//doc:") {
+                    if (content.substring(l, l + 6) === "//doc:" || content.substring(l, l + 6) === "//Doc:") {
                         let start = l + 6;
-                        let end = content.indexOf('.', start);
+                        let end = content.indexOf('\n', start);
 
                         if (end !== -1) {
 
                             comments.push(content.substring(start, end).trim());
                             l = end;
                         }
-                    } else if (content.substring(l, l + 6) === "/*doc:") {
+                    } else if (content.substring(l, l + 7) === "// doc:" || content.substring(l, l + 7) === "// Doc:") {
+                        let start = l + 7;
+                        let end = content.indexOf('\n', start);
+
+                        if (end !== -1) {
+
+                            comments.push(content.substring(start, end).trim());
+                            l = end;
+                        }
+                    } else if (content.substring(l, l + 6) === "/*doc:" || content.substring(l, l + 6) === "/*Doc:") {
                         let start = l + 6;
+                        let end = content.indexOf('*/', start);
+
+                        if (end !== -1) {
+
+                            comments.push(content.substring(start, end).trim());
+                            l = end;
+                        }
+                    } else if (content.substring(l, l + 7) === "/* doc:" || content.substring(l, l + 7) === "/* Doc:") {
+                        let start = l + 7;
                         let end = content.indexOf('*/', start);
 
                         if (end !== -1) {

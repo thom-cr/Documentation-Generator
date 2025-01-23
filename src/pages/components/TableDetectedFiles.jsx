@@ -1,7 +1,7 @@
 import React from "react";
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper } from "@mui/material";
 
-//doc: Ceci est une premiere doc.
+// Doc: Ceci est une premiere doc
 
 const TableDetectedFiles = ({ rows }) => {
     return (
@@ -32,6 +32,6 @@ const TableDetectedFiles = ({ rows }) => {
       );
 }
 
-//doc: Ceci est une deuxieme doc.
+//Doc: Ceci est une deuxieme doc
 
 export default TableDetectedFiles;
