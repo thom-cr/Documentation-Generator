@@ -1,13 +1,11 @@
+const GetAllFiles = require("./GetAllFiles");
+
 const FolderSelector = async () => {
     try {
         const directoryHandle = await window.showDirectoryPicker();
-        const files = [];
+        let files = [];
 
-        for await (const entry of directoryHandle.values()) {
-            if(entry.kind === "file") {
-                files.push(entry);
-            }
-        }
+        files = await GetAllFiles(directoryHandle, files);
         
         return files;
 
