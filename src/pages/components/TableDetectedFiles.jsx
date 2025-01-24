@@ -1,7 +1,7 @@
 import React from "react";
 import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper } from "@mui/material";
 
-// Doc: Ceci est une premiere doc
+// Doc: Ceci est une premiere doc, je suis en train de tester au bout de combien de caracteres le fichier part en cacahuete une fois deux fois trois fois quatre fois cinq fois six fois sept fois huit fois neuf fois dix fois onze fois douze fois treize fois quatorze fois quize fois
 
 const TableDetectedFiles = ({ rows }) => {
     return (
@@ -33,5 +33,6 @@ const TableDetectedFiles = ({ rows }) => {
 }
 
 //Doc: Ceci est une deuxieme doc
+//Doc: Ceci est une troisieme docù
 
 export default TableDetectedFiles;
