@@ -14,4 +14,4 @@ const FilesArray = async (files, extensionsName) => {
     }
 };
 
-export default FilesArray;
+module.exports = FilesArray;

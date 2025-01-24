@@ -65,4 +65,4 @@ const FileParsing = async (formData, rows) => {
     return filesParsed;
 };
 
-export default FileParsing; 
+module.exports = FileParsing; 

@@ -5,4 +5,4 @@ const OutputNameFilePDF = (projectName) => {
     return outputNameFilePDF;
 }
 
-export default OutputNameFilePDF;
+module.exports = OutputNameFilePDF;

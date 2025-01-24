@@ -5,4 +5,4 @@ const OutputNameFileMarkdown = (projectName) => {
     return outputNameFileMarkdown;
 }
 
-export default OutputNameFileMarkdown;
+module.exports = OutputNameFileMarkdown;

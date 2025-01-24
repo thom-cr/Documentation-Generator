@@ -1,5 +1,6 @@
+const { jsPDF } = require("jspdf");
+
 const WritePDF = (outputTitle, outputNameFilePDF, filesParsed) => {
-    const { jsPDF } = require("jspdf");
     const doc = new jsPDF();
     let j = 40;
     let k = 50;
@@ -40,4 +41,4 @@ const WritePDF = (outputTitle, outputNameFilePDF, filesParsed) => {
     doc.save(outputNameFilePDF);
 };
 
-export default WritePDF;
+module.exports = WritePDF;

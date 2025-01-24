@@ -35,4 +35,4 @@ const FilterFiles = async (files, extensions) => {
     return filesArrayResult;
 };
 
-export default FilterFiles;
+module.exports = FilterFiles;

@@ -25,4 +25,4 @@ const DocumentationGenerator = async (formData, rows) => {
     }
 };
 
-export default DocumentationGenerator;
+module.exports = DocumentationGenerator;

@@ -26,4 +26,4 @@ const WriteMarkdown = (outputTitleMarkdown, outputNameFileMarkdown, filesParsed)
     saveAs(blob, outputNameFileMarkdown);
 }
 
-export default WriteMarkdown;
+module.exports = WriteMarkdown;

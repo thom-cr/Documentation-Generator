@@ -4,4 +4,4 @@ const ToArrayExtensions = (extensionsName) => {
     return extensions;
 };
 
-export default ToArrayExtensions;
+module.exports = ToArrayExtensions;

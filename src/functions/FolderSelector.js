@@ -18,4 +18,4 @@ const FolderSelector = async () => {
     }
 };
 
-export default FolderSelector;
+module.exports = FolderSelector;

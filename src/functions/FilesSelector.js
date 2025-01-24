@@ -22,4 +22,4 @@ const FilesSelector = async () => {
     }
 };
 
-export default FilesSelector;
+module.exports = FilesSelector;

@@ -13,4 +13,4 @@ const FilesArraySelection = (files) => {
     return rows;
 };
 
-export default FilesArraySelection;
+module.exports = FilesArraySelection;

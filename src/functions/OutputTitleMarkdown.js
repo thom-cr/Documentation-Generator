@@ -5,4 +5,4 @@ const OutputTitleMarkdown = (outputName) => {
     return outputTitleMarkdown;
 };
 
-export default OutputTitleMarkdown;
+module.exports = OutputTitleMarkdown;
