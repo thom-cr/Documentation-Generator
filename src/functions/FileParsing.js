@@ -36,7 +36,10 @@ const FileParsing = async (formData, rows) => {
 
                         if (end !== -1) {
 
-                            comments.push(content.substring(start, end).trim());
+                            let comment = content.substring(start, end).trim();
+                            comment = comment.replace(/\r\n/g, ' ')
+                                             .replace(/\s+/g, ' ');
+                            comments.push(comment);
                             l = end;
                         }
                     } else if (content.substring(l, l + 7) === "/* doc:" || content.substring(l, l + 7) === "/* Doc:") {
@@ -45,7 +48,10 @@ const FileParsing = async (formData, rows) => {
 
                         if (end !== -1) {
 
-                            comments.push(content.substring(start, end).trim());
+                            let comment = content.substring(start, end).trim();
+                            comment = comment.replace(/\r\n/g, ' ')
+                                             .replace(/\s+/g, ' ');
+                            comments.push(comment);
                             l = end;
                         }
                     }
