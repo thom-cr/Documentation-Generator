@@ -2,6 +2,8 @@
 
 [![Node.js CI](https://github.com/thom-cr/documentation-generator/actions/workflows/node.js.yml/badge.svg)](https://github.com/thom-cr/documentation-generator/actions/workflows/node.js.yml)
 
+[![codecov](https://codecov.io/gh/thom-cr/documentation-generator/graph/badge.svg?token=iPKvKDwdvB)](https://codecov.io/gh/thom-cr/documentation-generator)
+
 ## Getting Started
 
 First, run the development server:
