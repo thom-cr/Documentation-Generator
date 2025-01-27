@@ -1,9 +1,10 @@
-const { jsPDF } = require("jspdf");
-
 const WritePDF = (outputTitle, outputNameFilePDF, filesParsed) => {
+    const { jsPDF } = require("jspdf");
     const doc = new jsPDF();
-    let j = 40;
-    let k = 50;
+    const pageHeight = 280;
+    let currentFilePosition = 40;
+    let currentCommentPosition = 50;
+    
     
     doc.setFontSize(22);
     doc.setFont("Helvetica", "Bold");
@@ -17,10 +18,15 @@ const WritePDF = (outputTitle, outputNameFilePDF, filesParsed) => {
         const fileName = dash.concat(" ", filesParsed[i].name, " :");
         
         doc.setFont("Helvetica", "Bold");
-        doc.text(fileName, 20, j);
+        doc.text(fileName, 20, currentFilePosition);
         doc.setFont("Helvetica", "");
     
-        k = j + 10;
+        if (currentFilePosition > pageHeight) {
+            doc.addPage();
+            currentFilePosition = 20;
+        }
+
+        currentCommentPosition = currentFilePosition + 10;
     
         for (let l = 0; l < filesParsed[i].comments.length; l++) {
             let comment = filesParsed[i].comments[l];
@@ -28,17 +34,25 @@ const WritePDF = (outputTitle, outputNameFilePDF, filesParsed) => {
             let lineHeight = 8;
     
             for (let m = 0; m < splitText.length; m++) {
-                doc.text(splitText[m], 20, k);
-                k += lineHeight;
+                if (currentCommentPosition > pageHeight) {
+                    doc.addPage();
+                    currentCommentPosition = 20;
+                }
+                doc.text(splitText[m], 20, currentCommentPosition);
+                currentCommentPosition += lineHeight;
             }
     
-            linesNumber = k;
+            linesNumber = currentCommentPosition;
+        }
+
+        if (linesNumber === 0) {
+            linesNumber = currentFilePosition + 10;
         }
     
-        j = linesNumber + 10;
+        currentFilePosition = linesNumber + 10;
     }
 
     doc.save(outputNameFilePDF);
 };
 
-module.exports = WritePDF;
+export default WritePDF;
