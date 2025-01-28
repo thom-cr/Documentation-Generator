@@ -33,14 +33,14 @@ jobs:
       uses: codecov/codecov-action@v5
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-coverage:
-  status:
-    project:
-      default:
-        target: auto 
-        threshold: 5
-        base: auto 
-        flags: 
-          - unit
-        paths: 
-          - "src"
+  coverage:
+    status:
+      project:
+        default:
+          target: auto 
+          threshold: 5
+          base: auto 
+          flags: 
+            - unit
+          paths: 
+            - "src"
