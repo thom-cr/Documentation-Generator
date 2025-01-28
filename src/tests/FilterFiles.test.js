@@ -47,24 +47,30 @@ describe('FilterFiles', () => {
     });
 
     it('should handle errors gracefully', async () => {
+        const originalConsoleError = console.error;
+        console.error = jest.fn();
+        
         const files = [
             {
                 name: 'file1.txt',
-                getFile: async () => { throw new Error('Test error'); }
+                getFile: async () => {
+                    throw new Error('Test error');
+                }
             },
             {
                 name: 'file2.js',
                 getFile: async () => ({ name: 'file2.js' })
             }
         ];
-
+    
         const extensions = ['js'];
-
+    
         const expectedOutput = [
             { file: 'file2', extension: 'js' }
         ];
-
+    
         const result = await FilterFiles(files, extensions);
         expect(result).toEqual(expectedOutput);
-    });
+        console.error = originalConsoleError;
+    });    
 });

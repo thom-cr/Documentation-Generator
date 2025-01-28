@@ -1,14 +1,22 @@
 //doc: fonction qui retourne un dictionnaire avec le nom du fichier et l'extension
 
 const FilesArraySelection = (files) => {
-
     const rows = files.map((fileEntry) => {
-        const [fileName, ...extParts] = fileEntry.name.split(".");
-        const extension = extParts.join(".");
+        const splitParts = fileEntry.name.split(".");
+        
+        if (splitParts.length === 1) {
+            return {
+                file: fileEntry.name,
+                extension: "",
+            };
+        }
+
+        const extension = splitParts.pop();
+        const fileName = splitParts.join(".");
         
         return {
             file: fileName,
-            extension: extension || "",
+            extension: extension,
         };
     });
 

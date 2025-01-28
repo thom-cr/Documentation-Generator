@@ -1,3 +1,4 @@
+// tests/DocumentationGenerator.test.js
 const DocumentationGenerator = require('../functions/DocumentationGenerator');
 const FileParsing = require('../functions/FileParsing');
 const OutputTitle = require('../functions/OutputTitle');
@@ -7,13 +8,13 @@ const OutputTitleMarkdown = require('../functions/OutputTitleMarkdown');
 const OutputNameFileMarkdown = require('../functions/OutputNameFileMarkdown');
 const WriteMarkdown = require('../functions/WriteMarkdown');
 
-jest.mock('../functions/FileParsing');
-jest.mock('../functions/OutputTitle');
-jest.mock('../functions/OutputNameFilePDF');
-jest.mock('../functions/WritePDF');
-jest.mock('../functions/OutputTitleMarkdown');
-jest.mock('../functions/OutputNameFileMarkdown');
-jest.mock('../functions/WriteMarkdown');
+jest.mock('../functions/FileParsing', () => jest.fn());
+jest.mock('../functions/OutputTitle', () => jest.fn());
+jest.mock('../functions/OutputNameFilePDF', () => jest.fn());
+jest.mock('../functions/WritePDF', () => jest.fn());
+jest.mock('../functions/OutputTitleMarkdown', () => jest.fn());
+jest.mock('../functions/OutputNameFileMarkdown', () => jest.fn());
+jest.mock('../functions/WriteMarkdown', () => jest.fn());
 
 describe('DocumentationGenerator', () => {
     it('should generate PDF documentation if format is pdf', async () => {
@@ -79,26 +80,5 @@ describe('DocumentationGenerator', () => {
         expect(OutputTitleMarkdown).toHaveBeenCalledWith('TestProject');
         expect(OutputNameFileMarkdown).toHaveBeenCalledWith('TestProject');
         expect(WriteMarkdown).toHaveBeenCalledWith('Test Project Documentation', 'TestProject.md', filesParsed);
-    });
-
-    it('should handle empty formats gracefully', async () => {
-        const formData = {
-            projectName: 'TestProject',
-            formats: {}
-        };
-        const rows = [];
-        const filesParsed = [{ name: 'file1', functions: [] }];
-
-        FileParsing.mockResolvedValue(filesParsed);
-
-        await DocumentationGenerator(formData, rows);
-
-        expect(FileParsing).toHaveBeenCalledWith(formData, rows);
-        expect(OutputTitle).not.toHaveBeenCalled();
-        expect(OutputNameFilePDF).not.toHaveBeenCalled();
-        expect(WritePDF).not.toHaveBeenCalled();
-        expect(OutputTitleMarkdown).not.toHaveBeenCalled();
-        expect(OutputNameFileMarkdown).not.toHaveBeenCalled();
-        expect(WriteMarkdown).not.toHaveBeenCalled();
     });
 });

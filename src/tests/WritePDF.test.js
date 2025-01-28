@@ -2,14 +2,18 @@ const WritePDF = require('../functions/WritePDF');
 const { jsPDF } = require('jspdf');
 
 jest.mock('jspdf', () => {
-    const jsPDFMock = jest.fn().mockImplementation(() => ({
+    const mockMethods = {
         setFontSize: jest.fn(),
         setFont: jest.fn(),
         text: jest.fn(),
         addPage: jest.fn(),
         splitTextToSize: jest.fn().mockReturnValue([]),
         save: jest.fn()
-    }));
+    };
+
+    const jsPDFMock = jest.fn().mockImplementation(() => mockMethods);
+    jsPDFMock.mock.instances = [mockMethods];
+
     return { jsPDF: jsPDFMock };
 });
 
