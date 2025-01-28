@@ -16,11 +16,6 @@ const TextBoxExtensions = ({ setRows, formData, setFormData }) => {
         
         setRows(filesArray);
     };
-
-    /* Doc: 
-    ceci est une autre doc
-    entre la 3eme et la 4eme
-    */
     
     return (
         <TextField type="input" onChange={handleChange} value={formData?.extensionsName} label="Extensions" variant="outlined" placeholder="js, jsx, ..." fullWidth/>

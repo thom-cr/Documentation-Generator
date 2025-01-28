@@ -1,10 +1,10 @@
-import FileParsing from "./FileParsing";
-import OutputTitle from "./OutputTitle";
-import OutputNameFilePDF from "./OutputNameFilePDF";
-import WritePDF from "./WritePDF";
-import OutputTitleMarkdown from "./OutputTitleMarkdown";
-import OutputNameFileMarkdown from "./OutputNameFileMarkdown";
-import WriteMarkdown from "./WriteMarkdown";
+const FileParsing = require('./FileParsing');
+const OutputTitle = require('./OutputTitle');
+const OutputNameFilePDF = require('./OutputNameFilePDF');
+const WritePDF = require('./WritePDF');
+const OutputTitleMarkdown = require('./OutputTitleMarkdown');
+const OutputNameFileMarkdown = require('./OutputNameFileMarkdown');
+const WriteMarkdown = require('./WriteMarkdown');
 /* Doc: 
     explication du generateur de documentation
     qui est vraiment super genial
