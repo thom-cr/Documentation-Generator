@@ -56,8 +56,29 @@ const FileParsing = async (formData, rows) => {
                         }
                     }
                 }
+                let lastPosition = 0;
 
-                filesParsed.push({ name: fileName, comments: comments || ""});
+                let constStart = content.indexOf('const', lastPosition);
+
+                if (constStart !== -1) {
+                    let functionStart = constStart + 6;
+                    let functionEnd = content.indexOf(' ', functionStart);
+    
+                    if (functionEnd !== -1) {
+                        let functionName = content.substring(functionStart, functionEnd).trim();
+    
+                        console.log("Comments :", comments);
+                        filesParsed.push({
+                            name: fileName,
+                            functions: [{
+                                functionName: functionName || "",
+                                comments: comments || ""
+                            }]
+                        });
+
+                        lastPosition = functionEnd;
+                    }
+                }
             }
         }
     }

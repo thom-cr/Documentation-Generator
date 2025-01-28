@@ -3,6 +3,7 @@ import { saveAs } from 'file-saver';
 const WriteMarkdown = (outputTitleMarkdown, outputNameFileMarkdown, filesParsed) => {
     const star = "*";
     const tabStar = "   *";
+    const doubleTabStar = "     *";
     let data = [];
 
     data.push(outputTitleMarkdown);
@@ -12,9 +13,14 @@ const WriteMarkdown = (outputTitleMarkdown, outputNameFileMarkdown, filesParsed)
         
         data.push(fileName);
 
-        for (let j = 0; j < filesParsed[i].comments.length; j++) {
-            const comment = tabStar.concat(" ", filesParsed[i].comments[j]);
-            
+        for (let j = 0; j < filesParsed[i].functions.length; j++) {
+            const functionName = filesParsed[i].functions[j].functionName;
+            const comments = filesParsed[i].functions[j].comments;
+
+            const functionHeader = tabStar.concat(" **Fonction ", functionName, "** :");
+            data.push(functionHeader);
+
+            const comment = doubleTabStar.concat(" ", comments);
             data.push(comment);
         }
     }

@@ -5,7 +5,10 @@ import WritePDF from "./WritePDF";
 import OutputTitleMarkdown from "./OutputTitleMarkdown";
 import OutputNameFileMarkdown from "./OutputNameFileMarkdown";
 import WriteMarkdown from "./WriteMarkdown";
-
+/* Doc: 
+    explication du generateur de documentation
+    qui est vraiment super genial
+*/
 const DocumentationGenerator = async (formData, rows) => {
     const { projectName, formats } = formData;
     const filesParsed = await FileParsing(formData, rows);
