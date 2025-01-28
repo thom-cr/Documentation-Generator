@@ -3,15 +3,9 @@ const FilterFiles = async (files, extensions) => {
     let filesArrayResult = [];
 
     for(const fileHandle of files) {
-        try {
-            const file = await fileHandle.getFile();
+        const file = await fileHandle.getFile();
 
-            filesArray.push(file.name);
-
-        } catch (error) {
-
-            console.error(`Erreur avec le fichier :`, error);
-        }
+        filesArray.push(file.name);
     }
 
     for(let i = 0; i < filesArray.length; i++) {
