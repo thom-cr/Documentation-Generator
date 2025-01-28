@@ -1,6 +1,7 @@
 import ToArrayExtensions from "./ToArrayExtensions";
 import FilterFiles from "./FilterFiles";
 
+// Doc: documentation d'explication de l'affichage des fichiers pris en charge par la generation de la documentation
 const FilesArray = async (files, extensionsName) => {
 
     if (extensionsName !== undefined) {
