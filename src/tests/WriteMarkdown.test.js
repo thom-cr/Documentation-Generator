@@ -1,8 +1,11 @@
+const { TextEncoder, TextDecoder } = require('util');
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;
+
 const WriteMarkdown = require('../functions/WriteMarkdown');
-const { saveAs } = require('file-saver');
 
 jest.mock('file-saver', () => ({
-    saveAs: jest.fn()
+    saveAs: jest.fn(),
 }));
 
 describe('WriteMarkdown', () => {
@@ -15,41 +18,55 @@ describe('WriteMarkdown', () => {
                 functions: [
                     {
                         functionName: 'function1',
-                        comments: ['Comment 1', 'Comment 2']
-                    }
-                ]
+                        comments: ['Comment 1', 'Comment 2'],
+                    },
+                ],
             },
             {
                 name: 'file2',
                 functions: [
                     {
                         functionName: 'function2',
-                        comments: ['Comment 3']
-                    }
-                ]
-            }
+                        comments: ['Comment 3'],
+                    },
+                ],
+            },
         ];
+
+        // Expected Markdown content
+        const expectedContent = [
+            '# Documentation',
+            '* __file1__ :',
+            '   * **Fonction function1** :',
+            '     * Comment 1,Comment 2',
+            '* __file2__ :',
+            '   * **Fonction function2** :',
+            '     * Comment 3',
+        ].join('\n');
+
+        const originalBlob = global.Blob;
+        let capturedBlobContent = null;
+
+        global.Blob = class MockBlob {
+            constructor(content) {
+                capturedBlobContent = content;
+            }
+        };
+
+        const { saveAs } = require('file-saver');
 
         WriteMarkdown(outputTitleMarkdown, outputNameFileMarkdown, filesParsed);
 
-        const expectedContent = `# Documentation
-* __file1__ :
-   * **Fonction function1** :
-     * Comment 1,Comment 2
-* __file2__ :
-   * **Fonction function2** :
-     * Comment 3`;
+        global.Blob = originalBlob;
 
-        expect(saveAs).toHaveBeenCalledWith(
-            expect.any(Blob),
-            outputNameFileMarkdown
-        );
+        expect(saveAs).toHaveBeenCalledTimes(1);
+        expect(saveAs.mock.calls[0][1]).toBe(outputNameFileMarkdown);
 
-        const blob = saveAs.mock.calls[0][0];
-        const reader = new FileReader();
-        reader.onload = () => {
-            expect(reader.result).toBe(expectedContent);
-        };
-        reader.readAsText(blob);
+        const blobContent = capturedBlobContent[0];
+        const textContent = typeof blobContent === 'string' 
+            ? blobContent 
+            : new TextDecoder().decode(new Uint8Array(blobContent));
+
+        expect(textContent).toBe(expectedContent);
     });
 });
