@@ -1,84 +1,70 @@
 const FileParsing = async (formData, rows) => {
+    if (!formData || !formData.files || !Array.isArray(rows)) {
+        return [];
+    }
+
     const { files } = formData;
     const filesParsed = [];
-    
-    for (let i = 0; i < files.length; i++) {
-        const [fileName] = files[i].name.split(".");
 
-        for (let j = 0; j < rows.length; j++) {
-            if (fileName == rows[j].file) {
-                const file = await files[i].getFile();
+    for (const fileEntry of files) {
+        const [fileName] = fileEntry.name.split(".");
+
+        for (const row of rows) {
+            if (fileName === row.file) {
+                const file = await fileEntry.getFile();
                 const content = await file.text();
-                let comments = [];
+                const functions = [];
 
-                for (let l = 0; l < content.length; l++) {
-                    if (content.substring(l, l + 6) === "//doc:" || content.substring(l, l + 6) === "//Doc:") {
-                        let start = l + 6;
-                        let end = content.indexOf('\n', start);
+                const lines = content.split("\n");
+                let pendingComments = [];
+                let insideBlockComment = false;
+                let blockCommentBuffer = "";
 
-                        if (end !== -1) {
+                for (let i = 0; i < lines.length; i++) {
+                    let line = lines[i].trim();
 
-                            comments.push(content.substring(start, end).trim());
-                            l = end;
+                    if (/^\/\/\s?[Dd]oc:/.test(line)) {
+                        pendingComments.push(line.replace(/^\/\/\s?[Dd]oc:\s?/, "").trim());
+                    }
+
+                    if (/^\/\*\s?[Dd]oc:/.test(line)) {
+                        insideBlockComment = true;
+                        blockCommentBuffer = line.replace(/^\/\*\s?[Dd]oc:\s?/, "").trim();
+                    } else if (insideBlockComment) {
+                        if (line.endsWith("*/")) {
+                            insideBlockComment = false;
+                            blockCommentBuffer += " " + line.replace("*/", "").trim();
+                            pendingComments.push(blockCommentBuffer.trim());
+                            blockCommentBuffer = "";
+                        } else {
+                            blockCommentBuffer += " " + line.trim();
                         }
-                    } else if (content.substring(l, l + 7) === "// doc:" || content.substring(l, l + 7) === "// Doc:") {
-                        let start = l + 7;
-                        let end = content.indexOf('\n', start);
+                    }
 
-                        if (end !== -1) {
+                    if (i + 1 < lines.length) {
+                        let nextLine = lines[i + 1].trim();
+                        if (nextLine.startsWith("const ")) {
+                            let functionStart = nextLine.indexOf("const") + 6;
+                            let functionEnd = nextLine.indexOf(" ", functionStart);
 
-                            comments.push(content.substring(start, end).trim());
-                            l = end;
-                        }
-                    } else if (content.substring(l, l + 6) === "/*doc:" || content.substring(l, l + 6) === "/*Doc:") {
-                        let start = l + 6;
-                        let end = content.indexOf('*/', start);
+                            if (functionEnd !== -1 && pendingComments.length > 0) {
+                                let functionName = nextLine.substring(functionStart, functionEnd).trim();
 
-                        if (end !== -1) {
+                                functions.push({
+                                    functionName: functionName || "",
+                                    comments: [...pendingComments],
+                                });
 
-                            let comment = content.substring(start, end).trim();
-                            comment = comment.replace(/\r\n/g, ' ')
-                                             .replace(/\s+/g, ' ');
-                            comments.push(comment);
-                            l = end;
-                        }
-                    } else if (content.substring(l, l + 7) === "/* doc:" || content.substring(l, l + 7) === "/* Doc:") {
-                        let start = l + 7;
-                        let end = content.indexOf('*/', start);
-
-                        if (end !== -1) {
-
-                            let comment = content.substring(start, end).trim();
-                            comment = comment.replace(/\r\n/g, ' ')
-                                             .replace(/\s+/g, ' ');
-                            comments.push(comment);
-                            l = end;
+                                pendingComments = [];
+                            }
                         }
                     }
                 }
-                let lastPosition = 0;
 
-                let constStart = content.indexOf('const', lastPosition);
-
-                if (constStart !== -1) {
-                    let functionStart = constStart + 6;
-                    let functionEnd = content.indexOf(' ', functionStart);
-    
-                    if (functionEnd !== -1) {
-                        let functionName = content.substring(functionStart, functionEnd).trim();
-    
-                        console.log("Comments :", comments);
-                        filesParsed.push({
-                            name: fileName,
-                            functions: [{
-                                functionName: functionName || "",
-                                comments: comments || ""
-                            }]
-                        });
-
-                        lastPosition = functionEnd;
-                    }
-                }
+                filesParsed.push({
+                    name: fileName,
+                    functions: functions.length > 0 ? functions : [{ functionName: "", comments: [] }],
+                });
             }
         }
     }
@@ -86,4 +72,4 @@ const FileParsing = async (formData, rows) => {
     return filesParsed;
 };
 
-module.exports = FileParsing; 
+module.exports = FileParsing;

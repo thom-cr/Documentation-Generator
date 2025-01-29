@@ -1,18 +1,15 @@
-import ToArrayExtensions from "./ToArrayExtensions";
-import FilterFiles from "./FilterFiles";
+const ToArrayExtensions = require("./ToArrayExtensions");
+const FilterFiles = require("./FilterFiles");
 
 // Doc: documentation d'explication de l'affichage des fichiers pris en charge par la generation de la documentation
 const FilesArray = async (files, extensionsName) => {
-
-    if (extensionsName !== undefined) {
-        const extensions = ToArrayExtensions(extensionsName);
-        const filesFiltered = await FilterFiles(files, extensions);
-        const rows = filesFiltered;
-
-        console.log('Extensions : ', extensions);
-
-        return rows;
+    if (!extensionsName || typeof extensionsName !== "string" || extensionsName.trim().length === 0) {
+        return []; 
     }
+
+    const extensions = ToArrayExtensions(extensionsName);
+
+    return await FilterFiles(files, extensions);
 };
 
 module.exports = FilesArray;
