@@ -7,7 +7,7 @@ const ButtonGenerateDocumentation = ({ formData, rows }) => {
         DocumentationGenerator(formData, rows);
     };
 
-    const isDisabled = !formData.projectName.trim() || formData.files.length === 0 || !formData.formats.pdf && !formData.formats.markdown;
+    const isDisabled = !formData.projectName?.trim() || formData.files?.length === 0 || !formData.formats?.pdf && !formData.formats?.markdown;
 
     return (
         <Button onClick={handleSubmit} disabled={isDisabled} variant="contained">Générer la documentation</Button>
