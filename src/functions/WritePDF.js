@@ -32,7 +32,7 @@ const WritePDF = (outputTitle, outputNameFilePDF, filesParsed) => {
             const comments = filesParsed[i].functions[j].comments;
 
             if (functionName) { 
-                const funcText = `Fonction ${functionName} :`;
+                const funcText = `Fonction ${functionName} : `;
                 doc.setFont("Helvetica", "Bold");
                 doc.text(funcText, 30, currentCommentPosition);
                 currentCommentPosition += 10;
