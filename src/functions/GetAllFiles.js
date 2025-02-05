@@ -1,4 +1,6 @@
-async function GetAllFiles(directoryHandle, files) {
+// Doc: Permet d'attraper récursivement les fichiers dans les différents dossiers et sous-dossier
+
+const GetAllFiles = async (directoryHandle, files) => {
     for await (const entry of directoryHandle.values()) {
         if (entry.kind === "file") {
             

@@ -1,3 +1,5 @@
+// doc: Cette fonction filre les fichiers selon les extensions choisis et renvoie le tableau des fichiers filtres
+
 const FilterFiles = async (files, extensions) => {
     let filesArray = [];
     let filesArrayResult = [];

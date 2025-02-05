@@ -7,18 +7,19 @@ const FileParsing = async (formData, rows) => {
     const filesParsed = [];
 
     for (const fileEntry of files) {
-        const [fileName] = fileEntry.name.split(".");
+        const [fileName, ...extParts] = fileEntry.name.split(".");
+        const extension = extParts.length ? extParts.join(".") : "";
 
         for (const row of rows) {
             if (fileName === row.file) {
                 const file = await fileEntry.getFile();
                 const content = await file.text();
                 const functions = [];
-
-                const lines = content.split("\n");
                 let pendingComments = [];
                 let insideBlockComment = false;
                 let blockCommentBuffer = "";
+
+                const lines = content.split("\n");
 
                 for (let i = 0; i < lines.length; i++) {
                     let line = lines[i].trim();
@@ -41,22 +42,49 @@ const FileParsing = async (formData, rows) => {
                         }
                     }
 
-                    if (i + 1 < lines.length) {
-                        let nextLine = lines[i + 1].trim();
+                    let nextIndex = i + 1;
+                    while (nextIndex < lines.length && lines[nextIndex].trim() === "") {
+                        nextIndex++;
+                    }
+
+                    let nextLine = nextIndex < lines.length ? lines[nextIndex].trim() : "";
+
+                    let isFunctionDeclaration =
+                        nextLine.startsWith("const ") || nextLine.indexOf("function") !== -1;
+
+                    if (isFunctionDeclaration) {
+                        let functionName = "";
+
                         if (nextLine.startsWith("const ")) {
                             let functionStart = nextLine.indexOf("const") + 6;
                             let functionEnd = nextLine.indexOf(" ", functionStart);
-
-                            if (functionEnd !== -1 && pendingComments.length > 0) {
-                                let functionName = nextLine.substring(functionStart, functionEnd).trim();
-
-                                functions.push({
-                                    functionName: functionName || "",
-                                    comments: [...pendingComments],
-                                });
-
-                                pendingComments = [];
+                            if (functionEnd !== -1) {
+                                functionName = nextLine.substring(functionStart, functionEnd).trim();
                             }
+                        } else if (nextLine.indexOf("function") !== -1) {
+                            let functionStart = nextLine.indexOf("function") + 9;
+                            let functionEnd = nextLine.indexOf(" ", functionStart);
+                            if (functionEnd !== -1) {
+                                functionName = nextLine.substring(functionStart, functionEnd).trim();
+                            }
+                        }
+
+                        if (functionName && pendingComments.length > 0) {
+                            functions.push({
+                                functionName: functionName,
+                                comments: [...pendingComments],
+                            });
+
+                            pendingComments = [];
+                        }
+                    } else {
+                        if (pendingComments.length > 0) {
+                            functions.push({
+                                functionName: "",
+                                comments: [...pendingComments],
+                            });
+
+                            pendingComments = [];
                         }
                     }
                 }

@@ -28,29 +28,34 @@ const WritePDF = (outputTitle, outputNameFilePDF, filesParsed) => {
         currentCommentPosition = currentFilePosition + 10;
 
         for (let j = 0; j < filesParsed[i].functions.length; j++) {
-            const func = "Fonction ";
-            const functionName = func.concat(filesParsed[i].functions[j].functionName, " : ");
+            const functionName = filesParsed[i].functions[j].functionName;
             const comments = filesParsed[i].functions[j].comments;
 
-            let n = 0;
-            while (n < functionName.length) {
-                n++;
+            if (functionName) { 
+                const funcText = `Fonction ${functionName} :`;
+                doc.setFont("Helvetica", "Bold");
+                doc.text(funcText, 30, currentCommentPosition);
+                currentCommentPosition += 10;
             }
 
-            doc.text(functionName, 30, currentCommentPosition);
-            doc.setFont("Helvetica", "");
-            currentCommentPosition += 10;
-
-            let splitText = doc.splitTextToSize(comments, 160);
-            let lineHeight = 8;
-
-            for (let m = 0; m < splitText.length; m++) {
-                if (currentCommentPosition > pageHeight) {
-                    doc.addPage();
-                    currentCommentPosition = 20;
+            if (comments.length > 0) {
+                doc.setFont("Helvetica", "");
+                
+                if (!functionName) {
+                    currentCommentPosition += 5;
                 }
-                doc.text(splitText[m], 40, currentCommentPosition);
-                currentCommentPosition += lineHeight;
+
+                let splitText = doc.splitTextToSize(comments, 160);
+                let lineHeight = 8;
+
+                for (let m = 0; m < splitText.length; m++) {
+                    if (currentCommentPosition > pageHeight) {
+                        doc.addPage();
+                        currentCommentPosition = 20;
+                    }
+                    doc.text(splitText[m], 40, currentCommentPosition);
+                    currentCommentPosition += lineHeight;
+                }
             }
 
             linesNumber = currentCommentPosition;

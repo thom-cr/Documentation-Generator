@@ -1,3 +1,5 @@
+// Doc: fonction permettant de sélectionner les différents fichiers
+
 const FilesSelector = async () => {
 
     const pickerOptions = {

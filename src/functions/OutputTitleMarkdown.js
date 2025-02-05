@@ -1,3 +1,5 @@
+// Doc: Permet de rajouter la syntaxe Markdown
+
 const OutputTitleMarkdown = (outputName) => {
     const h1 = "# ";
     const outputTitleMarkdown = h1.concat("Documentation de ", outputName);
