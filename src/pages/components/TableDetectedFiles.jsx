@@ -33,6 +33,6 @@ const TableDetectedFiles = ({ rows }) => {
 }
 
 //Doc: Ceci est une deuxieme doc
-//Doc: Ceci est une troisieme docù
+//Doc: Ceci est une troisieme doc
 
 export default TableDetectedFiles;

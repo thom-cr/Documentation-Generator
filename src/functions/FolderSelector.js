@@ -9,10 +9,9 @@ const FolderSelector = async () => {
         files = await GetAllFiles(directoryHandle, files);
         
         return files;
-
     } catch (error) {
-
         console.error("Erreur lors de la sélection du dossier :", error);
+        
         return [];
     }
 };

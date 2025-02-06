@@ -1,16 +1,15 @@
 const WritePDF = (outputTitle, outputNameFilePDF, filesParsed) => {
     const { jsPDF } = require("jspdf");
     const doc = new jsPDF();
+    const pageHeight = 280;
     let currentFilePosition = 40;
     let currentCommentPosition = 50;
-    const pageHeight = 280;
+    let linesNumber = 0;
 
     doc.setFontSize(22);
     doc.setFont("Helvetica", "Bold");
     doc.text(outputTitle, 10, 20);
     doc.setFontSize(16);
-
-    let linesNumber = 0;
 
     for (let i = 0; i < filesParsed.length; i++) {
         const dash = "-";
@@ -33,8 +32,10 @@ const WritePDF = (outputTitle, outputNameFilePDF, filesParsed) => {
 
             if (functionName) { 
                 const funcText = `Fonction ${functionName} : `;
+                
                 doc.setFont("Helvetica", "Bold");
                 doc.text(funcText, 30, currentCommentPosition);
+                
                 currentCommentPosition += 10;
             }
 
@@ -51,9 +52,11 @@ const WritePDF = (outputTitle, outputNameFilePDF, filesParsed) => {
                 for (let m = 0; m < splitText.length; m++) {
                     if (currentCommentPosition > pageHeight) {
                         doc.addPage();
+                        
                         currentCommentPosition = 20;
                     }
                     doc.text(splitText[m], 40, currentCommentPosition);
+                    
                     currentCommentPosition += lineHeight;
                 }
             }

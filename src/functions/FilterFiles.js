@@ -7,6 +7,7 @@ const FilterFiles = async (files, extensions) => {
     for (const fileHandle of files) {
         try {
             const file = await fileHandle.getFile();
+            
             filesArray.push(file.name);
         } catch (error) {
             console.error(`Error retrieving file: ${error.message || error}`);
