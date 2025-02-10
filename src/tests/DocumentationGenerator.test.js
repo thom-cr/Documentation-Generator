@@ -1,7 +1,7 @@
 // tests/DocumentationGenerator.test.js
 const DocumentationGenerator = require('../functions/DocumentationGenerator');
 const FileParsing = require('../functions/FileParsing');
-const OutputTitle = require('../functions/OutputTitlePDF');
+const OutputTitlePDF = require('../functions/OutputTitlePDF');
 const OutputNameFilePDF = require('../functions/OutputNameFilePDF');
 const WritePDF = require('../functions/WritePDF');
 const OutputTitleMarkdown = require('../functions/OutputTitleMarkdown');
@@ -9,7 +9,7 @@ const OutputNameFileMarkdown = require('../functions/OutputNameFileMarkdown');
 const WriteMarkdown = require('../functions/WriteMarkdown');
 
 jest.mock('../functions/FileParsing', () => jest.fn());
-jest.mock('../functions/OutputTitle', () => jest.fn());
+jest.mock('../functions/OutputTitlePDF', () => jest.fn());
 jest.mock('../functions/OutputNameFilePDF', () => jest.fn());
 jest.mock('../functions/WritePDF', () => jest.fn());
 jest.mock('../functions/OutputTitleMarkdown', () => jest.fn());
@@ -26,13 +26,13 @@ describe('DocumentationGenerator', () => {
         const filesParsed = [{ name: 'file1', functions: [] }];
 
         FileParsing.mockResolvedValue(filesParsed);
-        OutputTitle.mockReturnValue('Test Project Documentation');
+        OutputTitlePDF.mockReturnValue('Test Project Documentation');
         OutputNameFilePDF.mockReturnValue('TestProject.pdf');
 
         await DocumentationGenerator(formData, rows);
 
         expect(FileParsing).toHaveBeenCalledWith(formData, rows);
-        expect(OutputTitle).toHaveBeenCalledWith('TestProject');
+        expect(OutputTitlePDF).toHaveBeenCalledWith('TestProject');
         expect(OutputNameFilePDF).toHaveBeenCalledWith('TestProject');
         expect(WritePDF).toHaveBeenCalledWith('Test Project Documentation', 'TestProject.pdf', filesParsed);
     });
@@ -66,7 +66,7 @@ describe('DocumentationGenerator', () => {
         const filesParsed = [{ name: 'file1', functions: [] }];
 
         FileParsing.mockResolvedValue(filesParsed);
-        OutputTitle.mockReturnValue('Test Project Documentation');
+        OutputTitlePDF.mockReturnValue('Test Project Documentation');
         OutputNameFilePDF.mockReturnValue('TestProject.pdf');
         OutputTitleMarkdown.mockReturnValue('Test Project Documentation');
         OutputNameFileMarkdown.mockReturnValue('TestProject.md');
@@ -74,7 +74,7 @@ describe('DocumentationGenerator', () => {
         await DocumentationGenerator(formData, rows);
 
         expect(FileParsing).toHaveBeenCalledWith(formData, rows);
-        expect(OutputTitle).toHaveBeenCalledWith('TestProject');
+        expect(OutputTitlePDF).toHaveBeenCalledWith('TestProject');
         expect(OutputNameFilePDF).toHaveBeenCalledWith('TestProject');
         expect(WritePDF).toHaveBeenCalledWith('Test Project Documentation', 'TestProject.pdf', filesParsed);
         expect(OutputTitleMarkdown).toHaveBeenCalledWith('TestProject');
