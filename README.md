@@ -110,7 +110,6 @@ The automatic documentation generator is a tool that allows the creation and exp
 - PDF title generator (**OutputTitlePDF.js**)  
 - Extension array transformation (**ToArrayExtensions.js**)  
 
-![Image 2](file-FrFcnmFZkC2Yhwav1K3Dgf)
 
 ## Components
 
@@ -138,7 +137,6 @@ Retrieves the names of extensions to analyze and updates the **formData** and th
 ### Help Button
 A component that displays a button to help users understand how the generator works.
 
-![Image 3](file-AxLWVqgC4Bt1AyRGqvwu3Z)
 
 ## Functions
 
