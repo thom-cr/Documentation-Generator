@@ -1,4 +1,4 @@
-//doc: fonction qui retourne un dictionnaire avec le nom du fichier et l'extension
+//doc: returns dictionnary with fileName and extensions
 
 const FilesArraySelection = (files) => {
     const rows = files.map((fileEntry) => {

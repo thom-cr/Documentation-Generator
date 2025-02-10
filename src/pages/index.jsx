@@ -8,7 +8,7 @@ import TextBoxExtensions from "./components/TextBoxExtensions.jsx";
 import CheckBoxOutputFormat from "./components/CheckBoxOutputFormat.jsx";
 import ButtonGenerateDocumentation from "./components/ButtonGenerateDocumentation.jsx";
 import TableDetectedFiles from "./components/TableDetectedFiles.jsx";
-import HelpButton from "./components/HelpButton.jsx";
+import ButtonHelp from "./components/ButtonHelp.jsx";
 
 const MainFrame = () => {
   const [rows, setRows] = useState([]);
@@ -35,32 +35,29 @@ const MainFrame = () => {
             <Typography variant="h2" gutterBottom>
               Générateur de documentation
             </Typography>
-            <Typography variant="body1" gutterBottom>
-              Outil permettant la génération automatique de documentation en fonction des commentaires et des liens entre les différentes méthodes
-            </Typography>
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%', maxWidth: '840px' }}>
             <Box component="form" sx={{ display: 'flex', flexDirection: 'column', width: '100%', maxWidth: '410px', marginTop: '20px', marginRight: '10px' }}>
               <Box sx={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
-                <HelpButton title={"Sélection du dossier ou des fichiers"} text={"Sélectionnez un dossier ou des fichiers à analyser."} />
+                <ButtonHelp title={"Sélection du dossier ou des fichiers"} text={"Sélectionnez un dossier ou des fichiers à analyser."} />
                 <ButtonFolderSelector setRows={setRows} formData={formData} setFormData={setFormData}/>
                 <ButtonFilesSelector setRows={setRows} formData={formData} setFormData={setFormData}/>
               </Box>
 
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '16px' }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <HelpButton title={"Nom du projet"} text={"Entrez le nom du projet."} />
+                  <ButtonHelp title={"Nom du projet"} text={"Entrez le nom du projet."} />
                   <TextBoxProjectName formData={formData} setFormData={setFormData} disabled='false'/>
                 </Box>
 
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <HelpButton title={"Extensions"} text={"Spécifiez les extensions des fichiers à analyser sous le format (ex: js,py,etc...)."} />
+                  <ButtonHelp title={"Extensions"} text={"Spécifiez les extensions des fichiers à analyser sous le format js,py,etc.."} />
                   <TextBoxExtensions setRows={setRows} formData={formData} setFormData={setFormData}/>
                 </Box>
               </Box>
 
               <Box sx={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '16px' }}>
-                <HelpButton title={"Format de sortie"} text={"Sélectionnez le format de sortie de la documentation pdf ou markdown."} />
+                <ButtonHelp title={"Format de sortie"} text={"Sélectionnez le format de sortie de la documentation pdf et/ou markdown."} />
                 <CheckBoxOutputFormat formData={formData} setFormData={setFormData}/>
               </Box>
 

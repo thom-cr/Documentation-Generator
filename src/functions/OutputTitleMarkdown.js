@@ -1,4 +1,4 @@
-// Doc: Permet de rajouter la syntaxe Markdown
+// Doc: Add Markdown syntax
 
 const OutputTitleMarkdown = (outputName) => {
     const h1 = "# ";

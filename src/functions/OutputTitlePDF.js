@@ -1,10 +1,10 @@
-//doc: ajoute "Documentation de " au projectName
+//doc: Add PDF syntax
 
-const OutputTitle = (projectName) => {
+const OutputTitlePDF = (projectName) => {
     const documentation = "Documentation de";
     const outputTitle = documentation.concat(" ", projectName);
 
     return outputTitle;
 }
 
-module.exports = OutputTitle;
+module.exports = OutputTitlePDF;

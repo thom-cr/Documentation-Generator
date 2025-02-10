@@ -1,3 +1,5 @@
+// Doc: Used to parse files and only keep the ones with desired extensions
+
 const FileParsing = async (formData, rows) => {
     if (!formData || !formData.files || !Array.isArray(rows)) {
         return [];
