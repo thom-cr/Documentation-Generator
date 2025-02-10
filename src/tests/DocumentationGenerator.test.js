@@ -1,7 +1,7 @@
 // tests/DocumentationGenerator.test.js
 const DocumentationGenerator = require('../functions/DocumentationGenerator');
 const FileParsing = require('../functions/FileParsing');
-const OutputTitle = require('../functions/OutputTitle');
+const OutputTitle = require('../functions/OutputTitlePDF');
 const OutputNameFilePDF = require('../functions/OutputNameFilePDF');
 const WritePDF = require('../functions/WritePDF');
 const OutputTitleMarkdown = require('../functions/OutputTitleMarkdown');

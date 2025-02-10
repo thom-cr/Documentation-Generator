@@ -1,4 +1,12 @@
-// doc: Cette fonction filre les fichiers selon les extensions choisis et renvoie le tableau des fichiers filtres
+// doc: Can filter files based on the selected extensions and returns the array of filtered files.
+
+
+
+
+
+
+
+
 
 const FilterFiles = async (files, extensions) => {
     let filesArray = [];

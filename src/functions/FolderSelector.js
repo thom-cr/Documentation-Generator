@@ -1,6 +1,6 @@
 const GetAllFiles = require("./GetAllFiles");
 
-// doc: Fonction pour sélectionner un dossier
+// doc: Used to select a folder
 const FolderSelector = async () => {
     try {
         const directoryHandle = await window.showDirectoryPicker();

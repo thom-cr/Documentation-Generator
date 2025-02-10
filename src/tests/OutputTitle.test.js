@@ -1,4 +1,4 @@
-const OutputTitle = require('../functions/OutputTitle');
+const OutputTitle = require('../functions/OutputTitlePDF');
 
 describe('OutputTitle', () => {
     it('should return the correct title for a given project name', () => {

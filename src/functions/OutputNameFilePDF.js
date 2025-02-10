@@ -1,4 +1,4 @@
-// doc: ajoute le .pdf a la fin du project Name
+// doc: Add .pdf at the end of projectName
 
 const OutputNameFilePDF = (projectName) => {
     const extension = ".pdf";

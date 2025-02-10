@@ -1,5 +1,6 @@
 const { saveAs } = require('file-saver');
 
+// Doc: Use file-saver to generate the Markdown file
 const WriteMarkdown = (outputTitleMarkdown, outputNameFileMarkdown, filesParsed) => {
     const star = "*";
     const tabStar = "   *";

@@ -1,4 +1,6 @@
-const WritePDF = (outputTitle, outputNameFilePDF, filesParsed) => {
+//Doc: Use jspdf to generate the final pdf file
+
+const WritePDF = (outputTitlePDF, outputNameFilePDF, filesParsed) => {
     const { jsPDF } = require("jspdf");
     const doc = new jsPDF();
     const pageHeight = 280;
@@ -8,7 +10,7 @@ const WritePDF = (outputTitle, outputNameFilePDF, filesParsed) => {
 
     doc.setFontSize(22);
     doc.setFont("Helvetica", "Bold");
-    doc.text(outputTitle, 10, 20);
+    doc.text(outputTitlePDF, 10, 20);
     doc.setFontSize(16);
 
     for (let i = 0; i < filesParsed.length; i++) {

@@ -1,4 +1,4 @@
-// doc: ajoute le .md a la fin du project Name
+// doc: Add .md at the end of projectName
 
 const OutputNameFileMarkdown = (projectName) => {
     const extension = ".md";
